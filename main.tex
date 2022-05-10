@@ -1,0 +1,258 @@
+% !TEX program = xelatex
+\documentclass{ctexart}
+\usepackage{xcolor} % 在latex中使用颜色
+\usepackage{booktabs,tabularx,multicol} % 制作表格
+\usepackage{framed} % 制作文本框
+\usepackage{amsmath,amsthm,amssymb,amsfonts}    % 数学符号与字体
+
+\usepackage[colorlinks,
+            linkcolor=blue       %%修改此处为你想要的颜色
+            %anchorcolor=blue,  %%修改此处为你想要的颜色
+            %citecolor=blue,        %%修改此处为你想要的颜色，例如修改blue为red
+            ]{hyperref}
+\usepackage[left=2.0cm, right=2.0cm, top=2.5cm, bottom=2.5cm]{geometry} % 调整页边距
+\usepackage{appendix}   % 附录环境
+\usepackage{subfig,graphicx}    % 插入照片
+\usepackage{float}      % 固定浮动体
+\usepackage{lipsum,zhlipsum} %生成一些测试文本
+%---------------优雅的插入MATLAB代码---------%
+\usepackage{listings,matlab-prettifier} % MATLAB 美化包
+\lstset{
+        style=Matlab-editor,
+        basicstyle=\mlttfamily,
+        escapechar=`,
+        numbers      = left,
+        numbersep    = 5pt,
+        numberstyle  = \small\color{red},
+        frame        = single,
+        keepspaces   = true,
+        tabsize      = 4,
+        breaklines = true,
+}
+%-------------标题-------------%
+\title{数学小结论}
+\date{\today}
+\author{张阳}
+
+%-----------做一些设置-----------%
+\numberwithin{equation}{section}    % 公式标号与section的编号挂钩
+\punctstyle{kaiming}    % 调整标点符号大小
+
+%------------自定义一些命令------------%
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
+\def\degree{${}^{\circ}$}
+
+%---------配置环境------------%
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+
+% \newenvironment{solution}{\par\noindent\textbf{解答. }}{\par}
+% \newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\par}
+
+%-------------可控列宽的表格--------%
+\newcolumntype{R}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+%------------- 使得矩阵的最大大小超过 10 x 10-----------------%
+\addtocounter{MaxMatrixCols}{10}
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\section{定义}
+\begin{definition}[对角占优矩阵]
+    对角占优矩阵是指一矩阵的每一横行，对角线上元素的大小大于或等于同一横行其他元素大小的和，一矩阵A为对角占优矩阵若
+
+\begin{equation}
+|a_{ii}|\geq \sum _{j\neq i}|a_{ij}|\quad {\text{for all }}i
+\end{equation}
+其中$a_{ij}$为第 $i$ 行第 $j$ 列的元素。
+
+上述的定义中用到大于等于，其条件较松，因此有时会称为弱对角占优矩阵，若上述的定义用大于代替大于等于，则称为强对角占优矩阵。对角优势矩阵可以指弱对角占优矩阵，也可以指强对角占优矩阵，视上下文而定。
+\end{definition}
+
+\begin{definition}[范数]
+    
+\end{definition}
+\begin{definition}[距离]
+    设 $\mathbb{X}$ 为一非空集合，如果对于 $\mathbb{X}$ 中任给的两个元素 $x,y$，均有一个确定的实数，记为 $\rho(x,y)$，与它们对应且满足下面三个条件：
+    \begin{itemize}
+        \item 非负性：$\rho(x,y)\geqslant0,\rho(x,y)=0$ 的充分必要条件是 $x=y$。
+        \item 对称性：$\rho(x,y)=\rho(y,x)$。
+        \item 三角不等式：$\rho(x,y)\leqslant\rho(x,z)+\rho(z,y)$，这里 $z$ 也是 $\mathbb{X}$ 中的任意一个元素
+    \end{itemize}
+    则称 $\rho$ 是 $\mathbb{X}$ 上的一个距离，而称 $\mathbb{X}$ 是以 $\rho$ 为距离的距离空间，记为 $(X,\rho)$
+\end{definition}
+
+\begin{definition}[内积]
+    
+\end{definition}
+\section{等式}
+
+\begin{theorem}{Stirling公式}
+    
+\end{theorem}
+\begin{theorem}{Wallis公式}
+    
+\end{theorem}
+\begin{theorem}{和差化积公式}
+    
+\end{theorem}
+\begin{theorem}{积化和差公式}
+    
+\end{theorem}
+\begin{theorem}
+    \begin{equation}
+        \label{eqa:sin积分公式}
+        \begin{aligned}
+        \int_0^{\pi/2}\sin^n\varphi d\varphi=\left\{ \begin{aligned}
+            \frac{(2m-1)!!}{(2m)!!}\cdot\frac{\pi}{2},\qquad&n=2m\\
+            \frac{(2m)!!}{(2m+1)!!},\qquad\phantom{\cdot\frac{\pi}{2}}&n=2m+1\end{aligned}\right.
+        \end{aligned}
+    \end{equation}
+\begin{proof}
+\begin{enumerate}
+\item 对于 $n=1$，$\int_0^{\pi/2}\sin \varphi\dif \varphi=1$，结论显然成立
+
+\item 对于 $n=2$：
+
+\begin{equation}
+    \begin{aligned}
+        \int_0^{\pi/2}\sin^2\varphi\dif\varphi&=\int_0^{\pi/2}\frac{1-\cos2\varphi}{2}\dif\varphi\\
+        &=\left.\frac{x-\frac{1}{2}\sin2\varphi}{2}\right|_0^{\pi/2}\\
+        &=\frac{\pi}{4}
+    \end{aligned}
+\end{equation}
+结论也成立
+
+\item 对于 $n>2$ 的情况：
+\begin{equation}
+    \begin{aligned}
+        I = \int_0^{\pi/2}\sin^n\varphi\dif\varphi&=-\int_0^{\pi/2}\sin^{n-1}\varphi\dif\cos\varphi\\
+        &=\left.-\sin^{n-1}\varphi\cos\varphi\right|_0^{\pi/2}+(n-1)\int_0^{\pi/2}\cos^2\varphi\sin^{n-2}\varphi\dif\varphi\\
+        &=(n-1)\int_0^{\pi/2}\sin^{n-2}\varphi\dif\varphi-(n-1)I
+    \end{aligned}
+\end{equation}
+所以
+\begin{equation}
+    \label{eqa:sin积分公式推导}
+    I=\frac{n-1}{n}\int_0^{\pi/2}\sin^{n-2}\varphi\dif\varphi
+\end{equation}
+利用 \eqref{eqa:sin积分公式推导} 不难计算验证原结论。
+\end{enumerate}
+
+综上 \eqref{eqa:sin积分公式} 对任意 $n\in\mathbb{N}$ 都成立。
+\end{proof}
+\end{theorem}
+\section{不等式}
+\begin{theorem}{闵可夫斯基不等式}
+    5
+\end{theorem}
+\begin{theorem}{柯西不等式}
+\begin{equation}
+    \left(\sum_{k=1}^na_kb_k\right)^2\leqslant\sum_{k=1}^na_k^2\cdot\sum_{k=1}^nb_k^2
+\end{equation}
+其中 $a_k,b_k(k=1,2,\cdots,n)$ 均为实数。
+\end{theorem}
+\begin{proof}
+    任取实数 $\lambda$，则
+\begin{equation}
+    0\leqslant\sum_{k=1}^n(a_k+\lambda b_k)^2=\sum_{k=1}^na_k^2+2\lambda\sum_{k=1}^na_kb_k+\lambda^2\sum_{k=1}^nb_k^2
+\end{equation}
+右端是 $\lambda$ 的二次三项式。上述不等式表明，它对于 $\lambda$ 的一切实数值都是非负的，故其判别式不大于零，即
+
+\begin{equation}
+    \left(\sum_{k=1}^na_kb_k\right)^2\leqslant\sum_{k=1}^na_k^2\cdot\sum_{k=1}^nb_k^2
+\end{equation}
+\end{proof}
+\begin{theorem}{琴生不等式}
+    1
+\end{theorem}
+\begin{theorem}{柯西–施瓦茨不等式}
+    
+\end{theorem}
+\begin{theorem}{伯努利不等式}
+   \begin{equation}
+    (1+x)^{a}> 1+ax
+   \end{equation}
+其中，$a$ 为正实数，$x\geqslant-1$
+\end{theorem}
+\begin{proof}
+    设 $f(x)=(1+x)^a-ax-1$，于是 $f'(x)=a(1+x)^{a-1}-a$,$f''(x)=a(a-1)(1+x)^{a-2}>0$, 而 $f'(0)=0$,所以 $f(x)\geqslant f(0)=0$。
+\end{proof}
+\begin{theorem}
+    设 $a,b\geqslant 0 $,$p,q$ 为满足 $\frac{1}{p}+\frac{1}{q}=1$ 的正数，则
+    \begin{equation}
+        ab\leqslant\frac{1}{p}a^p+\frac{1}{q}b^q
+    \end{equation}
+\end{theorem}
+\begin{proof}
+    考虑函数 $f(x)=\ln x$ ，由 $f''(x)=-\frac{1}{x^2}<0$ 所以 $f(x)$ 在 $(0,+\infty)$ 是严格上凸函数。由上凸函数的性质可得：
+    
+    \begin{equation}
+    \ln(ab)=\frac{1}{p}\ln(a^p)+\frac{1}{q}\ln(b^q)\leqslant\ln(\frac{1}{p}a^p+\frac{1}{q}a^q)
+    \end{equation}
+
+    由 $\ln(x)$ 的单调性即可得到原不等式。
+    
+\end{proof}
+\section{代数}
+\begin{theorem}
+    若 $A$ 为实方阵，则 $A$ 为实对称阵当且仅当 $AA^T=A^2$
+\end{theorem}
+\begin{proof}
+    \href{https://www.bilibili.com/video/BV1Ev411174v}{一个有关迹的例题在证明中的运用}
+\end{proof}
+\begin{theorem}
+    $A$ 为实对称矩阵，则
+\begin{equation}
+    A=0 \iff {\rm tr}(AA^T)=0
+\end{equation}
+\end{theorem}
+\begin{theorem}
+    设 $n$ 阶矩阵 $A$ 满足
+
+    \begin{equation}
+        a_{ii}>\sum_{j\neq i}\lvert a_{ij}\rvert
+        \label{eqa:主对角占优}
+    \end{equation}
+    则 $\lvert a_{ij}\rvert>0$ 
+\end{theorem}
+\begin{proof}
+先证明 $\lvert A\rvert\neq 0$
+    \href{https://www.bilibili.com/video/BV1JY411h71h}{华中科大2022高代：主对角占优矩阵}
+
+若 $\lvert A\rvert=0$，则存在一个非零向量 $x$,满足：
+
+\begin{equation}
+    Ax=0
+    \label{eqa:Ax=0}
+\end{equation}
+记 $x_m=\max_{i}x_i$，于是，考虑线性方程组 \eqref{eqa:Ax=0} 中的第 $m$ 个方程，有：
+
+\begin{equation}
+a_{m1}x_1+a_{m2}x_2+\cdots+a_{mn}x_n=0
+\end{equation}
+
+将除第 $m$ 项外的其他项移到等式右边，再将等式两边除以 $m$，得到：
+
+\begin{equation}
+    x_m = -\frac{a_{m1}}{a_{mm}} x_1-\frac{a_{m2}}{a_{mm}} x_2-\cdots- \frac{a_{m(m-1)}}{a_{mm}}x_{m-1}-\frac{a_{m(m+1)}}{a_{mm}}x_{m+1}-\cdots-\frac{a_{mn}}{a_{mm}}x_n
+    \end{equation}
+
+    于是
+
+\begin{equation}
+    \begin{aligned}
+        \lvert a_{mm} \rvert &=\left| \frac{x_1}{x_m} a_{m1}+\frac{x_2}{x_m}a_{m2}+\cdots+ \frac{x_{m-1}}{x_m}a_{m(m-1)}+\frac{x_{m+1}}{x_m}a_{m(m+1)}+\cdots+\frac{x_{n}}{x_m}a_{mn}\right|\\
+        &<\left|\frac{x_1}{x_m} a_{m1}\right|+\left|\frac{x_2}{x_m} a_{m2}\right|+\cdots+ \left|\frac{x_{m-1}}{x_m}a_{m(m-1)}\right|+\left|\frac{x_{m+1}}{x_m}a_{m(m+1)}\right|+\cdots+\left|\frac{x_n}{x_m}a_{mn}\right|\\
+        &\leqslant |a_{m1}|+|a_{m2}|+\cdots+|a_{m(m-1)}|+|a_{m(m+1)}|+\cdots+|a_{mn}|\\
+        &=|\sum_{i\neq m}{a_{mi}}|
+    \end{aligned}
+    \end{equation}
+
+这与公式 \eqref{eqa:主对角占优} 矛盾。于是假设不成立。即 $|A|\neq 0$
+\end{proof}
+\end{document}
